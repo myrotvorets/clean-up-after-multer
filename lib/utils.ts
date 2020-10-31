@@ -9,9 +9,9 @@ export async function unlink(path: string): Promise<true | Error> {
     }
 }
 
-type FileLike = Pick<Express.Multer.File, 'path'>;
+export type FileLike = Pick<Express.Multer.File, 'path'>;
 
-interface RequestLike {
+export interface RequestLike {
     file?: FileLike;
     files?: Record<string, FileLike[]> | FileLike[];
 }
