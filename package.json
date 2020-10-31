@@ -1,7 +1,7 @@
 {
   "name": "@myrotvorets/clean-up-after-multer",
   "version": "1.0.0",
-  "description": "Express.js middleware to cleans up uploaded files after multer",
+  "description": "Express.js middleware to clean up uploaded files after multer",
   "main": "dist/lib/index.js",
   "scripts": {
     "build": "tsc",
@@ -21,6 +21,7 @@
   "keywords": [
     "cleanup",
     "express",
+    "expressjs",
     "middleware",
     "multer"
   ],
