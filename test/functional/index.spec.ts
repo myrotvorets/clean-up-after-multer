@@ -17,8 +17,8 @@ const file: Express.Multer.File = {
     mimetype: 'image/jpeg',
     destination: '/',
     filename: 'filename',
-    buffer: (undefined as unknown) as Buffer,
-    stream: (undefined as unknown) as Readable,
+    buffer: undefined as unknown as Buffer,
+    stream: undefined as unknown as Readable,
 };
 
 function buildApp(): express.Express {
@@ -74,7 +74,7 @@ describe('cleanUploadedFilesMiddleware', () => {
     it('should skip files with undefined path', () => {
         mockedUnlink.mockResolvedValueOnce(true);
         app.use('/', (req, res, next: NextFunction) => {
-            req.file = { ...file, path: (undefined as unknown) as string };
+            req.file = { ...file, path: undefined as unknown as string };
             res.json({});
             next();
         });

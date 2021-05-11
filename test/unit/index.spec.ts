@@ -11,8 +11,8 @@ const file: Express.Multer.File = {
     mimetype: 'image/jpeg',
     destination: '/',
     filename: 'filename',
-    buffer: (undefined as unknown) as Buffer,
-    stream: (undefined as unknown) as Readable,
+    buffer: undefined as unknown as Buffer,
+    stream: undefined as unknown as Readable,
 };
 
 describe('cleanupFilesAfterMulter', () => {
@@ -43,7 +43,7 @@ describe('cleanupFilesAfterMulter', () => {
         unlink.mockResolvedValueOnce(true);
 
         const req = {
-            file: { ...file, path: (undefined as unknown) as string },
+            file: { ...file, path: undefined as unknown as string },
         };
 
         return expect(cleanupFilesAfterMulter(req, unlink))
