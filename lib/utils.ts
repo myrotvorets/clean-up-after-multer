@@ -2,7 +2,7 @@ import { promises } from 'fs';
 
 export async function unlink(path: string): Promise<true | Error> {
     try {
-        await promises.unlink(path);
+        await promises.unlink(path); // lgtm[js/path-injection]
         return true;
     } catch (e) {
         return e as Error;
