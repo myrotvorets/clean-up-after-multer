@@ -19,6 +19,6 @@ export function cleanupFilesAfterMulter(req: RequestLike, unlink: UnlinkFunction
 
 export function cleanUploadedFilesMiddleware(unlink: UnlinkFunction = unlinkFile): RequestHandler {
     return function cleanUpAfterMulterMiddleware(req: Request, res: Response, next: NextFunction): void {
-        cleanupFilesAfterMulter(req, unlink).finally(next);
+        void cleanupFilesAfterMulter(req, unlink).finally(next);
     };
 }
