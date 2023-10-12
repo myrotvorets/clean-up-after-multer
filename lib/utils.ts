@@ -1,8 +1,8 @@
-import { promises } from 'fs';
+import { unlink as fsUnlink } from 'node:fs/promises';
 
 export async function unlink(path: string): Promise<true | Error> {
     try {
-        await promises.unlink(path); // lgtm[js/path-injection]
+        await fsUnlink(path); // lgtm[js/path-injection]
         return true;
     } catch (e) {
         return e as Error;
@@ -29,5 +29,5 @@ export function normalizeFiles(req: RequestLike): FileLike[] {
         return req.files;
     }
 
-    return Object.entries(req.files as Record<string, FileLike[]>).flatMap((item) => item[1]);
+    return Object.entries(req.files!).flatMap((item) => item[1]);
 }
