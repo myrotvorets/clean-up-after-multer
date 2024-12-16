@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 import { RequestLike, normalizeFiles, unlink as unlinkFile } from './utils';
 
