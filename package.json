@@ -55,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/myrotvorets/clean-up-after-multer/issues"
   },
-  "homepage": "https://github.com/myrotvorets/clean-up-after-multer#readme"
+  "homepage": "https://github.com/myrotvorets/clean-up-after-multer#readme",
+  "peerDependencies": {
+    "express": "^4.0.0"
+  }
 }
