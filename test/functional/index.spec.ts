@@ -1,12 +1,13 @@
-import type { Readable } from 'stream';
-import express, { NextFunction } from 'express';
+import type { Readable } from 'node:stream';
+import type { RequestListener } from 'node:http';
+import express, { type Express, type NextFunction } from 'express';
 import request from 'supertest';
 import * as utils from '../../lib/utils';
 import { cleanUploadedFilesMiddleware } from '../../lib';
 
 const mockedUnlink = jest.spyOn(utils, 'unlink');
 
-let app: express.Express;
+let app: Express;
 
 const file: Express.Multer.File = {
     path: '/somewhere/between/the/sacred/silence/and/sleep',
@@ -21,7 +22,7 @@ const file: Express.Multer.File = {
     stream: undefined as unknown as Readable,
 };
 
-function buildApp(): express.Express {
+function buildApp(): Express {
     const application = express();
     application.disable('x-powered-by');
     return application;
@@ -42,7 +43,7 @@ describe('cleanUploadedFilesMiddleware', () => {
 
         app.use(cleanUploadedFilesMiddleware());
 
-        return request(app)
+        return request(app as RequestListener)
             .get('/')
             .expect(200)
             .expect('Content-Type', /json/u)
@@ -60,7 +61,7 @@ describe('cleanUploadedFilesMiddleware', () => {
 
         app.use(cleanUploadedFilesMiddleware());
 
-        return request(app)
+        return request(app as RequestListener)
             .get('/')
             .expect(200)
             .expect('Content-Type', /json/u)
@@ -81,7 +82,7 @@ describe('cleanUploadedFilesMiddleware', () => {
 
         app.use(cleanUploadedFilesMiddleware());
 
-        return request(app)
+        return request(app as RequestListener)
             .get('/')
             .expect(200)
             .expect('Content-Type', /json/u)
